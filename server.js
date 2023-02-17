@@ -13,4 +13,10 @@ app.get("/holy", (req, res) => {
     res.send('smoke!!!');
 })
 
+app.get("/sendjson", (req, res) => {
+    res.status(200).json({message: "sending back some json"})
+})
+
+
+
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
