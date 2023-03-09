@@ -32,6 +32,7 @@ app.post('/create', (req, res) => {
         title: req.body.title,
         description: req.body.description
     }).then((doc) => console.log(doc))
+    .catch((err) => console.log(err))
 })
 
 
