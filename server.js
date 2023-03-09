@@ -1,26 +1,20 @@
 import express from 'express';
 const app = express()
+import mongoose from 'mongoose';
+import cors from 'cors'
 
-const PORT = process.env.PORT || 4000
+
+const PORT = process.env.PORT || 3001
 
 app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+app.use(cors())
+
 
 app.get("/", (req, res) => {
-    res.send('Hello World!');
+    res.send('Express is here!');
 })
 
-app.get("/holy", (req, res) => {
-    res.send('smoke!!!');
-})
-
-app.get("/call", (req, res) => {
-    res.send('reply!!!');
-})
-
-app.get("/sendjson", (req, res) => {
-    res.status(200).json({message: "sending back some json"})
-})
-
-
+app.post('/create', (req, res) => console.log(req.body))
 
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
