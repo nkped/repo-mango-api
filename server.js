@@ -8,15 +8,31 @@ import dotenv from 'dotenv'
 //middleware
 dotenv.config()
 app.use(express.json())
-//app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:false}))
 app.use(cors())
 
- //routes
+
+
+//datamodel
+const postSchema = mongoose.Schema({
+    title: String,
+    description: String
+})
+
+const Post = mongoose.model('post', postSchema)
+
+
+//routes
 app.get("/", (req, res) => {
     res.send('Express is here!');
 })
 
-app.post('/create', (req, res) => console.log(req.body))
+app.post('/create', (req, res) => {
+    Post.create({
+        title: req.body.title,
+        description: req.body.description
+    }).then((doc) => console.log(doc))
+})
 
 
 //server
