@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
     res.send('Express is here!')
 })
 
-app.post('/', (req, res) => {
+app.post('/create', (req, res) => {
     Post.create({
         title: req.body.title,
         description: req.body.description
@@ -35,8 +35,8 @@ app.post('/', (req, res) => {
 })
 
 
-app.get('/posts', (req, res) => {
-    Post.find()
+app.get('/create/posts', (req, res) => {
+    Post.find({})
     .then((items) => res.json(items))
     .catch((err) => console.log(err))
 })
